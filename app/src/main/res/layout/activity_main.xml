@@ -8,7 +8,14 @@
     <Button
         android:id="@+id/button_int_ad"
         android:layout_centerInParent="true"
-        android:text="Load ad"
+        android:text="@string/text_interstitial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button_video_ad"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/button_int_ad"
+        android:text="@string/text_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

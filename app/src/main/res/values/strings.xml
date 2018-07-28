@@ -2,4 +2,8 @@
     <string name="app_name">EmoneyOnline</string>
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="admob_banner_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_rewarded_id">/6499/example/rewarded-video</string>
+    <string name="admob_interstitial_id">/6499/example/interstitial</string>
+    <string name="text_video">Video</string>
+    <string name="text_interstitial">Interstitial</string>
 </resources>

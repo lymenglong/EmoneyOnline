@@ -19,7 +19,6 @@ import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AdView mAdView;
     private PublisherInterstitialAd mPublisherInterstitialAd;
     private RewardedVideoAd mRewardedVideoAd;
 
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         adView.setAdSize(AdSize.BANNER);
         adView.setAdUnitId(getString(R.string.admob_banner_id));
 
-        mAdView = findViewById(R.id.adView);
+        AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         //region InterstitialAd
         mPublisherInterstitialAd = new PublisherInterstitialAd(this);
-        mPublisherInterstitialAd.setAdUnitId("/6499/example/interstitial");
+        mPublisherInterstitialAd.setAdUnitId(getString(R.string.admob_interstitial_id));
         mPublisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
 
         findViewById(R.id.button_int_ad).setOnClickListener(new View.OnClickListener() {
@@ -123,9 +122,14 @@ public class MainActivity extends AppCompatActivity {
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
         mRewardedVideoAd.setRewardedVideoAdListener(videoAdListener);
         loadRewardedVideoAd();
-        if (mRewardedVideoAd.isLoaded()) {
-            mRewardedVideoAd.show();
-        }
+        findViewById(R.id.button_video_ad).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mRewardedVideoAd.isLoaded()) {
+                    mRewardedVideoAd.show();
+                }
+            }
+        });
     }
 
     RewardedVideoAdListener videoAdListener = new RewardedVideoAdListener() {
@@ -174,25 +178,25 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void loadRewardedVideoAd() {
-        mRewardedVideoAd.loadAd("/6499/example/rewarded-video",
+        mRewardedVideoAd.loadAd(getString(R.string.admob_rewarded_id),
                 new PublisherAdRequest.Builder().build());
     }
 
     @Override
     public void onResume() {
-        mRewardedVideoAd.resume(this);
+//        mRewardedVideoAd.resume(this);
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        mRewardedVideoAd.pause(this);
+//        mRewardedVideoAd.pause(this);
         super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        mRewardedVideoAd.destroy(this);
+//        mRewardedVideoAd.destroy(this);
         super.onDestroy();
     }
     //endregion
